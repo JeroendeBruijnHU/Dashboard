@@ -18,7 +18,6 @@ patientEnGebruik <- fluidRow(
 
   valueBoxOutput("patient"),
   valueBoxOutput("gebruik")
-  
 )
 
 

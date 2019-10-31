@@ -13,7 +13,14 @@ library(highcharter)
 library(plotly)
 library(shinydashboard)
 
+
+# making post url
+url <- 'https://data.castoredc.com/oauth/token'
+
+
 r <- GET("https://data.castoredc.com/api/country")
+
+
 
 print(http_status(r))
 
@@ -40,6 +47,8 @@ shinyServer(function(input, output) {
   output$hcontainer <- renderHighchart({
     
     hc <- highcharts_demo() %>%
+      hc_rm_series("Berlin") %>% 
+      hc_rm_series("Tokyo") %>% 
       hc_chart(type = "line")
     
   })
@@ -47,6 +56,8 @@ shinyServer(function(input, output) {
   output$hcontainer2 <- renderHighchart({
     
     hc <- highcharts_demo() %>%
+      hc_rm_series("Berlin") %>% 
+      hc_rm_series("Tokyo") %>% 
       hc_chart(type = "line")
     
   })
