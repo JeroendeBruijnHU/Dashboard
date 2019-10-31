@@ -12,6 +12,7 @@ library(httr)
 library(highcharter)
 library(plotly)
 library(shinydashboard)
+library(ggplot2)
 
 
 # making post url
@@ -26,8 +27,28 @@ print(http_status(r))
 
 print(r)
 
+month <- c('January', 'February', 'March', 'April', 'May', 'June', 'July',
+           'August', 'September', 'October', 'November', 'December')
+#month <- c(1,2,3,4,5,1,2,3,4,5,1,2)
+
+
+dates <- c("25/10/19", "26/10/19")
+score <- c(1, 2) 
+
+betterDates <- as.Date(dates, format = "%d/%m/%y")
+print(betterDates)
+
+#score <- c(1,2,3,4,5,1,2,3,4,5,1,2)
+
+data2 <- data.frame(betterDates, score)
+
 # Define server logic required to draw a histogram
 shinyServer(function(input, output) {
+  
+  output$plot <- renderPlotly({
+    plot_ly(data2, x = ~betterDates) %>%
+      add_trace(y = ~score, name = 'trace 1', mode = 'lines+markers')
+  })
   
   output$patient <- renderValueBox({
     valueBox(

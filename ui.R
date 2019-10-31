@@ -10,6 +10,7 @@
 library(shiny)
 library(shinydashboard)
 library(highcharter)
+library(plotly)
 
 
 header <- dashboardHeader(title = "Goings-On")
@@ -29,6 +30,8 @@ metingen <- fluidRow(box(title ="Stappen", highchartOutput("hcontainer5",height 
 
 vragen <- fluidRow(h2("vragen"))
 
+test <- fluidRow(title = "Test plotly", plotlyOutput("plot", height = "500px"))
+
 #body <- dashboardBody(patient, doelen, symptomen, metingen, vragen)
 
 #dashboardPage(header, dashboardSidebar(disable = TRUE), body)
@@ -42,7 +45,8 @@ fluidPage(
              tabPanel("Doelen",  doelen),
              tabPanel("Symptomen", symptomen),
              tabPanel("Metingen", metingen), 
-             tabPanel("Vragen", vragen)
+             tabPanel("Vragen", vragen), 
+             tabPanel("Test", test)
   )
 )
 
