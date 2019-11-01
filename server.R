@@ -32,8 +32,8 @@ month <- c('January', 'February', 'March', 'April', 'May', 'June', 'July',
 #month <- c(1,2,3,4,5,1,2,3,4,5,1,2)
 
 
-dates <- c("25/10/19", "26/10/19", "27/10/19", "28/10/19", "29/10/19")
-score <- c(1, 2, 3, 4, 5) 
+dates <- c("25/10/19", "26/10/19", "27/10/19", "28/10/19", "29/10/19", "30/10/19", "31/10/19")
+score <- c(1, 2, 3, 4, 5, 4, 3) 
 
 betterDates <- as.Date(dates, format = "%d/%m/%y")
 print(betterDates)
@@ -44,6 +44,8 @@ data2 <- data.frame(betterDates, score)
 
 
 image <- base64enc::base64encode("slagroeien.jpg")
+
+imageVader <- base64enc::base64encode("Vader.jpg")
 
 
 # Define server logic required to draw a histogram
@@ -69,6 +71,11 @@ shinyServer(function(input, output) {
             xanchor = "center", 
             yanchor = "middle"
           )
+        ), 
+        yaxis = list(
+          dtick = 1, 
+          tick0 = 1, 
+          tickmode = "linear"
         )
       )
     })
@@ -89,11 +96,16 @@ shinyServer(function(input, output) {
             sizex = 0.9999999999999999, 
             sizey = 0.9999999999999997, 
             sizing = "fill", 
-            source = paste("data:image/jpg;base64,", image),
+            source = paste("data:image/jpg;base64,", imageVader),
             opacity = 0.2, 
             xanchor = "center", 
             yanchor = "middle"
           )
+        ), 
+        yaxis = list(
+          dtick = 1, 
+          tick0 = 1, 
+          tickmode = "linear"
         )
       )
   })
