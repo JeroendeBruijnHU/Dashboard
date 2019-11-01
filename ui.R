@@ -30,7 +30,7 @@ metingen <- fluidRow(box(title ="Stappen", highchartOutput("hcontainer5",height 
 
 vragen <- fluidRow(h2("vragen"))
 
-test <- fluidRow(title = "Test plotly", plotlyOutput("plot", height = "500px"))
+test <- fluidRow(title = "Test plotly", box(plotlyOutput("plot", height = "500px")), box(plotlyOutput("plot2", height = "500px")))
 
 #body <- dashboardBody(patient, doelen, symptomen, metingen, vragen)
 

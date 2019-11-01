@@ -13,7 +13,7 @@ library(highcharter)
 library(plotly)
 library(shinydashboard)
 library(ggplot2)
-
+library(base64enc)
 
 # making post url
 url <- 'https://data.castoredc.com/oauth/token'
@@ -32,8 +32,8 @@ month <- c('January', 'February', 'March', 'April', 'May', 'June', 'July',
 #month <- c(1,2,3,4,5,1,2,3,4,5,1,2)
 
 
-dates <- c("25/10/19", "26/10/19")
-score <- c(1, 2) 
+dates <- c("25/10/19", "26/10/19", "27/10/19", "28/10/19", "29/10/19")
+score <- c(1, 2, 3, 4, 5) 
 
 betterDates <- as.Date(dates, format = "%d/%m/%y")
 print(betterDates)
@@ -42,12 +42,60 @@ print(betterDates)
 
 data2 <- data.frame(betterDates, score)
 
+
+image <- base64enc::base64encode("slagroeien.jpg")
+
+
 # Define server logic required to draw a histogram
 shinyServer(function(input, output) {
   
   output$plot <- renderPlotly({
     plot_ly(data2, x = ~betterDates) %>%
-      add_trace(y = ~score, name = 'trace 1', mode = 'lines+markers')
+      add_trace(y = ~score, name = 'test', mode = 'lines+markers') %>%
+      
+      layout(
+        images = list(
+          list(
+            x = 0.5, 
+            y = 0.5, 
+            xref = "paper", 
+            yref = "paper", 
+            layer = "above", 
+            sizex = 0.9999999999999999, 
+            sizey = 0.9999999999999997, 
+            sizing = "fill", 
+            source = paste("data:image/jpg;base64,", image),
+            opacity = 0.2, 
+            xanchor = "center", 
+            yanchor = "middle"
+          )
+        )
+      )
+    })
+  
+  
+  output$plot2 <- renderPlotly({
+    plot_ly(data2, x = ~betterDates) %>%
+      add_trace(y = ~score, name = 'test', mode = 'lines+markers') %>%
+      
+      layout(
+        images = list(
+          list(
+            x = 0.5, 
+            y = 0.5, 
+            xref = "paper", 
+            yref = "paper", 
+            layer = "above", 
+            sizex = 0.9999999999999999, 
+            sizey = 0.9999999999999997, 
+            sizing = "fill", 
+            source = paste("data:image/jpg;base64,", image),
+            opacity = 0.2, 
+            xanchor = "center", 
+            yanchor = "middle"
+          )
+        )
+      )
   })
   
   output$patient <- renderValueBox({
