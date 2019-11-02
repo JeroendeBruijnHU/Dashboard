@@ -22,7 +22,7 @@ patientEnGebruik <- fluidRow(
 )
 
 
-doelen <- fluidRow(box(title ="fietsen", highchartOutput("hcontainer",height = "500px")), box(title = "Vader zijn", highchartOutput("hcontainer2",height = "500px")))
+test <- fluidRow(box(title ="fietsen", highchartOutput("hcontainer",height = "500px")), box(title = "Vader zijn", highchartOutput("hcontainer2",height = "500px")))
 
 symptomen <- fluidRow(box(title ="Hoofdpijn", highchartOutput("hcontainer3",height = "500px")), box(title = "Koorts", highchartOutput("hcontainer4",height = "500px")))
 
@@ -30,7 +30,7 @@ metingen <- fluidRow(box(title ="Stappen", highchartOutput("hcontainer5",height 
 
 vragen <- fluidRow(h2("vragen"))
 
-test <- fluidRow(title = "Test plotly", box(title = "Slagroeien", plotlyOutput("plot", height = "500px")), box(title = "Vader zijn", plotlyOutput("plot2", height = "500px")))
+doelen <- fluidRow(box(title = "Slagroeien", plotlyOutput("plot", height = "500px")), box(title = "Vader zijn", plotlyOutput("plot2", height = "500px")))
 
 #body <- dashboardBody(patient, doelen, symptomen, metingen, vragen)
 

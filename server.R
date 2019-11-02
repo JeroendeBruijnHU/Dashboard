@@ -27,20 +27,16 @@ print(http_status(r))
 
 print(r)
 
-month <- c('January', 'February', 'March', 'April', 'May', 'June', 'July',
-           'August', 'September', 'October', 'November', 'December')
-#month <- c(1,2,3,4,5,1,2,3,4,5,1,2)
-
 
 dates <- c("25/10/19", "26/10/19", "27/10/19", "28/10/19", "29/10/19", "30/10/19", "31/10/19")
 score <- c(1, 2, 3, 4, 5, 4, 3) 
 
-betterDates <- as.Date(dates, format = "%d/%m/%y")
-print(betterDates)
+Datum <- as.Date(dates, format = "%d/%m/%y")
+print(Datum)
 
 #score <- c(1,2,3,4,5,1,2,3,4,5,1,2)
 
-data2 <- data.frame(betterDates, score)
+data2 <- data.frame(Datum, score)
 
 
 image <- base64enc::base64encode("slagroeien.jpg")
@@ -51,9 +47,11 @@ imageVader <- base64enc::base64encode("Vader.jpg")
 # Define server logic required to draw a histogram
 shinyServer(function(input, output) {
   
+  
+    
   output$plot <- renderPlotly({
-    plot_ly(data2, x = ~betterDates) %>%
-      add_trace(y = ~score, name = 'test', mode = 'lines+markers') %>%
+    plot_ly(data2, x = ~Datum) %>% 
+      add_trace(y = ~score, name = 'test', mode = 'lines+markers', color = 'green') %>%
       
       layout(
         images = list(
@@ -75,15 +73,18 @@ shinyServer(function(input, output) {
         yaxis = list(
           dtick = 1, 
           tick0 = 1, 
-          tickmode = "linear"
-        )
-      )
+          tickmode = "linear",
+          fixedrange = TRUE
+        ),
+        dragmode = "pan"
+      ) %>%
+      plotly::config(displayModeBar = FALSE)
     })
   
   
   output$plot2 <- renderPlotly({
-    plot_ly(data2, x = ~betterDates) %>%
-      add_trace(y = ~score, name = 'test', mode = 'lines+markers') %>%
+    plot_ly(data2, x = ~Datum) %>%
+      add_trace(y = ~score, name = 'test', mode = 'lines+markers', color = 'green') %>%
       
       layout(
         images = list(
@@ -105,9 +106,12 @@ shinyServer(function(input, output) {
         yaxis = list(
           dtick = 1, 
           tick0 = 1, 
-          tickmode = "linear"
-        )
-      )
+          tickmode = "linear",
+          fixedrange = TRUE
+        ),
+        dragmode = "pan"
+      ) %>%
+    plotly::config(displayModeBar = FALSE)
   })
   
   output$patient <- renderValueBox({
