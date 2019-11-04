@@ -70,8 +70,18 @@ shinyServer(function(input, output) {
   
 # Doelen    
   output$plot <- renderPlotly({
-    plot_ly(data2, x = ~Datum) %>% 
-      add_trace(y = score, mode = 'lines+markers') %>%
+    plot_ly(data2, x = Datum) %>% 
+      add_trace(y = score, mode = 'lines+markers', 
+                marker = list(
+                  color = 'yellow',
+                  size = 10,
+                  line = list(
+                    color = 'rgb(128,128,128))',
+                    width = 2
+                  )
+                )
+                
+                ) %>%
       
       layout(
         images = list(
@@ -92,21 +102,24 @@ shinyServer(function(input, output) {
         ), 
         yaxis = list(
           dtick = 1, 
-          tick0 = 1, 
+          tick0 = 1,
+          showticklabels = FALSE,
           tickmode = "linear",
           fixedrange = TRUE
         ),
         dragmode = "pan"
       ) %>%
+      
       plotly::config(displayModeBar = FALSE)
     })
   
   
   output$plot2 <- renderPlotly({
-    plot_ly(data2, x = ~Datum) %>%
+    plot_ly(data2, x = Datum) %>%
       add_trace(y = score1, name = 'test', mode = 'lines+markers') %>%
       
       layout(
+        line = list(shape = "linear", dash = "dot", width = 3),
         images = list(
           list(
             x = 0.5, 
@@ -127,6 +140,7 @@ shinyServer(function(input, output) {
           dtick = 1, 
           tick0 = 1, 
           tickmode = "linear",
+          showticklabels = FALSE,
           fixedrange = TRUE
         ),
         dragmode = "pan"
@@ -135,7 +149,7 @@ shinyServer(function(input, output) {
   })
   
   output$plot3 <- renderPlotly({
-    plot_ly(data2, x = ~Datum) %>%
+    plot_ly(data2, x = Datum) %>%
       add_trace(y = score2, name = 'test', mode = 'lines+markers') %>%
       
       layout(
@@ -158,6 +172,7 @@ shinyServer(function(input, output) {
         yaxis = list(
           dtick = 1, 
           tick0 = 1, 
+          showticklabels = FALSE,
           tickmode = "linear",
           fixedrange = TRUE
         ),
@@ -169,13 +184,14 @@ shinyServer(function(input, output) {
   
   # Symptomen
   output$symptoom1 <- renderPlotly({
-    plot_ly(data2, x = ~Datum) %>% 
+    plot_ly(data2, x = Datum) %>% 
       add_trace(y = score3, mode = 'lines+markers') %>%
       
       layout(
         yaxis = list(
           dtick = 1, 
           tick0 = 1, 
+          showticklabels = FALSE,
           tickmode = "linear",
           fixedrange = TRUE
         ),
