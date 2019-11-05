@@ -63,20 +63,38 @@ imageVader <- base64enc::base64encode("Vader.jpg")
 
 imageWerk <- base64enc::base64encode("Werk.jpg")
 
+# trace color based on color
+colorBasedValue <- function(score) {
+  if (score > 4) {
+    result <- "green"
+  }
+  else if (score < 2) {
+    result <- "rellow"
+  }
+  else {
+    result <- "red"
+  }
+  return(result)
+}
+
+# Alle kleuren die gebruikt worden in de lijngrafiek
+#colorsValue <- c("rgb(255, 91, 25)", "rgb(255, 161, 26)", "rgb(255, 214, 3)", "rgb(209, 204, 25)", "rgb(104, 190, 120)")
+
+# Kleuren in grafiek voor de demo
+colorsValue <- c("rgb(255, 91, 25)", "rgb(255, 214, 3)", "rgb(104, 190, 120)", "rgb(255, 161, 26)", "rgb(255, 214, 3)", "rgb(255, 91, 25)", "rgb(209, 204, 25)")
 
 # Define server logic required to draw a histogram
 shinyServer(function(input, output) {
-  
-  
+
 # Doelen    
   output$plot <- renderPlotly({
     plot_ly(data2, x = Datum) %>% 
-      add_trace(y = score, mode = 'lines+markers', 
+      add_trace(y = score, mode = 'lines+markers',  
                 marker = list(
-                  color = 'yellow',
+                  color = colorsValue,
                   size = 10,
                   line = list(
-                    color = 'rgb(128,128,128))',
+                    color = colorsValue,
                     width = 2
                   )
                 )
@@ -90,7 +108,7 @@ shinyServer(function(input, output) {
             y = 0.5, 
             xref = "paper", 
             yref = "paper", 
-            layer = "above", 
+            layer = "below", 
             sizex = 0.9999999999999999, 
             sizey = 0.9999999999999997, 
             sizing = "fill", 
