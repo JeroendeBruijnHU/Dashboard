@@ -15,6 +15,13 @@ library(shinydashboard)
 library(ggplot2)
 library(base64enc)
 
+# PIP bestaande compomenten 
+
+# base64enc wordt gebruikt om images te encoden en achter de grafiek te weergeven.
+# plotly wordt gebruikt om de grafiek te genereren.
+# 
+
+
 # making post url
 url <- 'https://data.castoredc.com/oauth/token'
 
