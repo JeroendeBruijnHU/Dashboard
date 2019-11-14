@@ -14,6 +14,7 @@ library(plotly)
 library(shinydashboard)
 library(ggplot2)
 library(base64enc)
+library(rsconnect)
 
 # PIP bestaande compomenten 
 
@@ -64,11 +65,11 @@ dataStappen <- data.frame(Datum, stappen)
 dataTemp <- data.frame(Datum, temperatuur)
 
 
-image <- base64enc::base64encode("slagroeien.jpg")
+image <- base64enc::base64encode("./slagroeien.jpg")
 
-imageVader <- base64enc::base64encode("Vader.jpg")
+imageVader <- base64enc::base64encode("./vader.jpg")
 
-imageWerk <- base64enc::base64encode("Werk.jpg")
+imageWerk <- base64enc::base64encode("./werk.jpg")
 
 # trace color based on color
 colorBasedValue <- function(score) {
@@ -92,6 +93,109 @@ colorsValue <- c("rgb(255, 91, 25)", "rgb(255, 214, 3)", "rgb(104, 190, 120)", "
 
 # Define server logic required to draw a histogram
 shinyServer(function(input, output) {
+  
+  
+  
+  
+  
+# Verloop
+  output$verloop <- renderPlotly({
+    plot_ly(data2, x = Datum) %>% 
+      add_trace(name = "Sloeproeien", y = score, mode = 'lines+markers',  
+                marker = list(
+                  color = colorsValue,
+                  size = 15,
+                  line = list(
+                    color = colorsValue,
+                    width = 2
+                  )
+                )
+                
+      ) %>%
+      
+      add_trace(name = "Vader zijn", y = score2, mode = 'lines+markers',  
+                marker = list(
+                  color = colorsValue,
+                  size = 15,
+                  line = list(
+                    color = colorsValue,
+                    width = 2
+                  )
+                )
+                
+      ) %>%
+      
+      layout(
+        images = list(
+          list(
+            x = 0.5, 
+            y = 0.5, 
+            xref = "paper", 
+            yref = "paper", 
+            layer = "below", 
+            sizex = 0.9999999999999999, 
+            sizey = 0.9999999999999997, 
+            sizing = "fill", 
+            source = paste("data:image/jpg;base64,", image),
+            opacity = 0.2, 
+            xanchor = "center", 
+            yanchor = "middle"
+          )
+        ), 
+        yaxis = list(
+          dtick = 1, 
+          tick0 = 1,
+          showticklabels = FALSE,
+          tickmode = "linear",
+          fixedrange = TRUE
+        ),
+        xaxis = list(
+          rangeselector = list(
+            buttons = list(
+              list(
+                count = 7,
+                label = "W",
+                step = "day",
+                stepmode = "backward",
+                size = "10%" ),
+              list(
+                count = 1,
+                label = "M",
+                step = "month",
+                stepmode = "backward"),
+              list(
+                count = 3,
+                label = "3M",
+                step = "month",
+                stepmode = "backward"),
+              list(
+                count = 6,
+                label = "6M",
+                step = "month",
+                stepmode = "backward"),
+              list(
+                count = 1,
+                label = "1J",
+                step = "year",
+                stepmode = "backward"),
+              list(
+                count = 2,
+                label = "2J",
+                step = "year",
+                stepmode = "todate"))),
+          
+          #rangeslider = list(type = "date")
+          FALSE
+        ),
+        dragmode = "pan"
+      ) %>%
+      
+      plotly::config(displayModeBar = FALSE)
+  })
+  
+  
+  
+  
 
 # Doelen    
   output$plot <- renderPlotly({
@@ -99,7 +203,7 @@ shinyServer(function(input, output) {
       add_trace(y = score, mode = 'lines+markers',  
                 marker = list(
                   color = colorsValue,
-                  size = 10,
+                  size = 15,
                   line = list(
                     color = colorsValue,
                     width = 2
@@ -132,6 +236,49 @@ shinyServer(function(input, output) {
           tickmode = "linear",
           fixedrange = TRUE
         ),
+        xaxis = list(
+          rangeselector = list(
+            buttons = list(
+              list(
+                count = 7,
+                label = "W",
+                step = "day",
+                stepmode = "backward",
+                size = "10%" ),
+              list(
+                count = 1,
+                label = "M",
+                step = "month",
+                stepmode = "backward"),
+              list(
+                count = 3,
+                label = "3M",
+                step = "month",
+                stepmode = "backward"),
+              list(
+                count = 6,
+                label = "6M",
+                step = "month",
+                stepmode = "backward"),
+              list(
+                count = 1,
+                label = "Y",
+                step = "year",
+                stepmode = "backward"),
+              list(
+                count = 2,
+                label = "2Y",
+                step = "year",
+                stepmode = "todate"),
+              list(
+                count = 1,
+                label = "YTD",
+                step = "year",
+                stepmode = "todate"),
+              list(step = "all"))),
+          
+          rangeslider = list(type = "date")
+        ),
         dragmode = "pan"
       ) %>%
       
@@ -141,10 +288,18 @@ shinyServer(function(input, output) {
   
   output$plot2 <- renderPlotly({
     plot_ly(data2, x = Datum) %>%
-      add_trace(y = score1, name = 'test', mode = 'lines+markers') %>%
+      add_trace(y = score1, name = 'test', mode = 'lines+markers',
+                marker = list(
+                  color = colorsValue,
+                  size = 10,
+                  line = list(
+                    color = colorsValue,
+                    width = 2
+                  )
+                )) %>%
       
       layout(
-        line = list(shape = "linear", dash = "dot", width = 3),
+        #line = list(shape = "linear", dash = "dot", width = 3),
         images = list(
           list(
             x = 0.5, 
@@ -175,7 +330,16 @@ shinyServer(function(input, output) {
   
   output$plot3 <- renderPlotly({
     plot_ly(data2, x = Datum) %>%
-      add_trace(y = score2, name = 'test', mode = 'lines+markers') %>%
+      add_trace(y = score2, name = 'test', mode = 'lines+markers', 
+                marker = list(
+                  color = colorsValue,
+                  size = 10,
+                  line = list(
+                    color = colorsValue,
+                    width = 2
+                  )
+                )
+                ) %>%
       
       layout(
         images = list(

@@ -50,16 +50,19 @@ notities <- fluidRow()
 
 doelen <- fluidRow(
                   box(title = "Sloeproeien",
-                      fluidRow(actionButton("goButton", "2Y", width = '16%', style = "float: right;"), actionButton("goButton", "Y", width = '16%', style = "float: right;"),actionButton("goButton", "6M", width = '16%', style = "float: right;") ,actionButton("goButton", "3M",width = '16%', style = "float: right;"),actionButton("goButton", "M",width = '16%', style = "float: right;"), actionButton("goButton", "W", width = '16%', style = "float: right;")),
+                      fluidRow(actionButton("goButton", "2J", width = '16%', style = "float: right;"), actionButton("goButton", "1J", width = '16%', style = "float: right;"),actionButton("goButton", "6M", width = '16%', style = "float: right;") ,actionButton("goButton", "3M",width = '16%', style = "float: right;"),actionButton("goButton", "M",width = '16%', style = "float: right;"), actionButton("goButton", "W", width = '16%', style = "float: right;")),
                        plotlyOutput("plot", height = "500px")), 
                    
                    box(title = "Vader zijn", 
-                       fluidRow(actionButton("goButton", "2Y", width = '16%', style = "float: right;"), actionButton("goButton", "Y", width = '16%', style = "float: right;"),actionButton("goButton", "6M", width = '16%', style = "float: right;") ,actionButton("goButton", "3M",width = '16%', style = "float: right;"),actionButton("goButton", "M",width = '16%', style = "float: right;"), actionButton("goButton", "W", width = '16%', style = "float: right;")),
+                       fluidRow(actionButton("goButton", "2J", width = '16%', style = "float: right;"), actionButton("goButton", "1J", width = '16%', style = "float: right;"),actionButton("goButton", "6M", width = '16%', style = "float: right;") ,actionButton("goButton", "3M",width = '16%', style = "float: right;"),actionButton("goButton", "M",width = '16%', style = "float: right;"), actionButton("goButton", "W", width = '16%', style = "float: right;")),
                        plotlyOutput("plot2", height = "500px")), 
                    box(title = "Werken",
-                       fluidRow(actionButton("goButton", "2Y", width = '16%', style = "float: right;"), actionButton("goButton", "Y", width = '16%', style = "float: right;"),actionButton("goButton", "6M", width = '16%', style = "float: right;") ,actionButton("goButton", "3M",width = '16%', style = "float: right;"),actionButton("goButton", "M",width = '16%', style = "float: right;"), actionButton("goButton", "W", width = '16%', style = "float: right;")),
+                       fluidRow(actionButton("goButton", "2J", width = '16%', style = "float: right;"), actionButton("goButton", "1J", width = '16%', style = "float: right;"),actionButton("goButton", "6M", width = '16%', style = "float: right;") ,actionButton("goButton", "3M",width = '16%', style = "float: right;"),actionButton("goButton", "M",width = '16%', style = "float: right;"), actionButton("goButton", "W", width = '16%', style = "float: right;")),
                        plotlyOutput("plot3", height = "500px")))
 
+
+verloop <- fluidRow(title = "verloop", 
+                    column(12, h3("verloop"), plotlyOutput("verloop", height = "500px")))
 #body <- dashboardBody(patient, doelen, symptomen, metingen, vragen)
 
 #dashboardPage(header, dashboardSidebar(disable = TRUE), body)
@@ -70,6 +73,7 @@ fluidPage(
   patientEnGebruik,
   
   navbarPage("Goings-On",
+             tabPanel("Verloop", verloop),
              tabPanel("Doelen",  doelen),
              tabPanel("Symptomen", symptomen),
              tabPanel("Metingen", metingen), 
