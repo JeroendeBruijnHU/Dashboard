@@ -16,7 +16,7 @@ library(plotly)
 header <- dashboardHeader(title = "Goings-On")
 
 
-patientEnGebruik <- fluidRow(column(4, h3("Patient nr #123241 " , tags$br(), " 59 jaar | 29-04-1960"), style = "background-color:#b3cebd;border: 3px solid white;"), column(4, h3("83% bijgehouden over 14 weken " , tags$br(), " Laatste update 14 oktober 2019"),  style = "background-color:#b3cebd;", style='border: 3px solid white'), theme = "custom.css")
+patientEnGebruik <- fluidRow(column(4, h3("Patient nr #123241 " , tags$br(), " 59 jaar | 29-04-1960"), style = "background-color:#b3cebd;border: 3px solid white;"), column(4, h3("83% bijgehouden over 14 weken " , tags$br(), " Laatste update 14 oktober 2019"),  style = "background-color:#b3cebd;", style='border: 3px solid white'))
 
 
 test <- fluidRow(box(title ="fietsen", highchartOutput("hcontainer",height = "500px")), box(title = "Vader zijn", highchartOutput("hcontainer2",height = "500px")), box(title ="fietsen", highchartOutput("hcontainer5",height = "500px")), box(title ="fietsen", highchartOutput("hcontainer6",height = "500px")))
@@ -50,36 +50,38 @@ notities <- fluidRow()
 
 doelen <- fluidRow(
                   box(title = "Sloeproeien",
-                      fluidRow(actionButton("goButton", "2J", width = '16%', style = "float: right;"), actionButton("goButton", "1J", width = '16%', style = "float: right;"),actionButton("goButton", "6M", width = '16%', style = "float: right;") ,actionButton("goButton", "3M",width = '16%', style = "float: right;"),actionButton("goButton", "M",width = '16%', style = "float: right;"), actionButton("goButton", "W", width = '16%', style = "float: right;")),
+                      fluidRow(actionButton("goButton", "2J", width = '16%', style = "float: right;"), actionButton("goButton", "1J", width = '16%', style = "float: right;"),actionButton("goButton", "6M", width = '16%', style = "float: right;") ,actionButton("goButton", "3M",width = '16%', style = "float: right;"),actionButton("goButton", "1M",width = '16%', style = "float: right;"), actionButton("goButton", "1W", width = '16%', style = "float: right;")),
                        plotlyOutput("plot", height = "500px")), 
                    
                    box(title = "Vader zijn", 
-                       fluidRow(actionButton("goButton", "2J", width = '16%', style = "float: right;"), actionButton("goButton", "1J", width = '16%', style = "float: right;"),actionButton("goButton", "6M", width = '16%', style = "float: right;") ,actionButton("goButton", "3M",width = '16%', style = "float: right;"),actionButton("goButton", "M",width = '16%', style = "float: right;"), actionButton("goButton", "W", width = '16%', style = "float: right;")),
+                       fluidRow(actionButton("goButton", "2J", width = '16%', style = "float: right;"), actionButton("goButton", "1J", width = '16%', style = "float: right;"),actionButton("goButton", "6M", width = '16%', style = "float: right;") ,actionButton("goButton", "3M",width = '16%', style = "float: right;"),actionButton("goButton", "1M",width = '16%', style = "float: right;"), actionButton("goButton", "1W", width = '16%', style = "float: right;")),
                        plotlyOutput("plot2", height = "500px")), 
                    box(title = "Werken",
-                       fluidRow(actionButton("goButton", "2J", width = '16%', style = "float: right;"), actionButton("goButton", "1J", width = '16%', style = "float: right;"),actionButton("goButton", "6M", width = '16%', style = "float: right;") ,actionButton("goButton", "3M",width = '16%', style = "float: right;"),actionButton("goButton", "M",width = '16%', style = "float: right;"), actionButton("goButton", "W", width = '16%', style = "float: right;")),
+                       fluidRow(actionButton("goButton", "2J", width = '16%', style = "float: right;"), actionButton("goButton", "1J", width = '16%', style = "float: right;"),actionButton("goButton", "6M", width = '16%', style = "float: right;") ,actionButton("goButton", "3M",width = '16%', style = "float: right;"),actionButton("goButton", "1M",width = '16%', style = "float: right;"), actionButton("goButton", "1W", width = '16%', style = "float: right;")),
                        plotlyOutput("plot3", height = "500px")))
 
 
-verloop <- fluidRow(title = "verloop", 
-                    column(12, h3("verloop"), plotlyOutput("verloop", height = "500px")))
+verloop <- fluidRow( column(12, 
+                            plotlyOutput("verloop", height = "500px"))
+                     )
 #body <- dashboardBody(patient, doelen, symptomen, metingen, vragen)
 
 #dashboardPage(header, dashboardSidebar(disable = TRUE), body)
 
 
 fluidPage(
-  
+  tags$script(src = "custom.js"),
+  theme = "./custom.css",
   patientEnGebruik,
   
-  navbarPage("Goings-On",
-             tabPanel("Verloop", verloop),
-             tabPanel("Doelen",  doelen),
-             tabPanel("Symptomen", symptomen),
-             tabPanel("Metingen", metingen), 
-             tabPanel("Vragen en zorgen", vragen), 
-             tabPanel("Notities en Fotos", notities), 
-             tabPanel("Test", test)
-  )
+    navbarPage('Goings-On', collapsible=TRUE,
+               tabPanel("Verloop", verloop),
+               tabPanel("Doelen",  doelen),
+               tabPanel("Symptomen", symptomen),
+               tabPanel("Metingen", metingen), 
+               tabPanel("Vragen en zorgen", vragen), 
+               tabPanel("Notities en Fotos", notities), 
+               tabPanel("Test", test)
+    )
 )
 
