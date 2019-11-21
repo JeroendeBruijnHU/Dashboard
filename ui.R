@@ -12,7 +12,6 @@ library(shinydashboard)
 library(highcharter)
 library(plotly)
 
-
 header <- dashboardHeader(title = "Goings-On")
 
 
@@ -49,20 +48,20 @@ vragen <- fluidRow(
 notities <- fluidRow()
 
 doelen <- fluidRow(
-                  box(title = "Sloeproeien",
+                  box(
                       fluidRow(actionButton("goButton", "2J", width = '16%', style = "float: right;"), actionButton("goButton", "1J", width = '16%', style = "float: right;"),actionButton("goButton", "6M", width = '16%', style = "float: right;") ,actionButton("goButton", "3M",width = '16%', style = "float: right;"),actionButton("goButton", "1M",width = '16%', style = "float: right;"), actionButton("goButton", "1W", width = '16%', style = "float: right;")),
                        plotlyOutput("plot", height = "500px")), 
                    
-                   box(title = "Vader zijn", 
+                   box(
                        fluidRow(actionButton("goButton", "2J", width = '16%', style = "float: right;"), actionButton("goButton", "1J", width = '16%', style = "float: right;"),actionButton("goButton", "6M", width = '16%', style = "float: right;") ,actionButton("goButton", "3M",width = '16%', style = "float: right;"),actionButton("goButton", "1M",width = '16%', style = "float: right;"), actionButton("goButton", "1W", width = '16%', style = "float: right;")),
                        plotlyOutput("plot2", height = "500px")), 
-                   box(title = "Werken",
+                   box(
                        fluidRow(actionButton("goButton", "2J", width = '16%', style = "float: right;"), actionButton("goButton", "1J", width = '16%', style = "float: right;"),actionButton("goButton", "6M", width = '16%', style = "float: right;") ,actionButton("goButton", "3M",width = '16%', style = "float: right;"),actionButton("goButton", "1M",width = '16%', style = "float: right;"), actionButton("goButton", "1W", width = '16%', style = "float: right;")),
                        plotlyOutput("plot3", height = "500px")))
 
 
 verloop <- fluidRow( column(12, 
-                            plotlyOutput("verloop", height = "500px"))
+                            plotlyOutput("verloop", height = "400px"))
                      )
 #body <- dashboardBody(patient, doelen, symptomen, metingen, vragen)
 
