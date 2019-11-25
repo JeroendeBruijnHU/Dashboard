@@ -24,15 +24,15 @@ output$plot <- renderPlotly({
     layout(
       title = list (
         text = "Sloeproeien",
-        y = 0.9,
+        y = 0.85,
         x = 0.55,
         xanchor = 'center',
         yanchor = 'top'
       ),
       font= list(
-        family="Courier New, monospace",
-        size=18,
-        color="#7f7f7f"
+        family="American Typewriter",
+        size=15,
+        color="#7D7771"
       ),
       images = list(
         list(
@@ -55,20 +55,21 @@ output$plot <- renderPlotly({
         tick0 = 1,
         showticklabels = FALSE,
         tickmode = "linear",
-        fixedrange = TRUE
+        fixedrange = TRUE,
+        range = c(0.5, 6)
       ),
       xaxis = list(
         rangeselector = list(
           buttons = list(
             list(
               count = 7,
-              label = "W",
+              label = "1W",
               step = "day",
               stepmode = "backward",
               size = "10%" ),
             list(
               count = 1,
-              label = "M",
+              label = "1M",
               step = "month",
               stepmode = "backward"),
             list(
@@ -83,22 +84,17 @@ output$plot <- renderPlotly({
               stepmode = "backward"),
             list(
               count = 1,
-              label = "Y",
+              label = "1J",
               step = "year",
               stepmode = "backward"),
             list(
               count = 2,
-              label = "2Y",
+              label = "2J",
               step = "year",
-              stepmode = "todate"),
-            list(
-              count = 1,
-              label = "YTD",
-              step = "year",
-              stepmode = "todate"),
-            list(step = "all"))),
+              stepmode = "todate"))),
         
-        rangeslider = list(type = "date")
+        # rangeslider = list(type = "date")
+        FALSE
       ),
       dragmode = "pan"
     ) %>%
@@ -121,15 +117,15 @@ output$plot2 <- renderPlotly({
     layout(
       title = list (
         text = "Vader zijn",
-        y = 0.9,
+        y = 0.85,
         x = 0.55,
         xanchor = 'center',
         yanchor = 'top'
       ),
       font= list(
-        family="Courier New, monospace",
-        size=18,
-        color="#7f7f7f"
+        family="American Typewriter",
+        size=15,
+        color="#7D7771"
       ),
       #line = list(shape = "linear", dash = "dot", width = 3),
       images = list(
@@ -156,6 +152,44 @@ output$plot2 <- renderPlotly({
         fixedrange = TRUE,
         range = c(0.5, 6)
       ),
+      xaxis = list(
+        rangeselector = list(
+          buttons = list(
+            list(
+              count = 7,
+              label = "1W",
+              step = "day",
+              stepmode = "backward",
+              size = "10%" ),
+            list(
+              count = 1,
+              label = "1M",
+              step = "month",
+              stepmode = "backward"),
+            list(
+              count = 3,
+              label = "3M",
+              step = "month",
+              stepmode = "backward"),
+            list(
+              count = 6,
+              label = "6M",
+              step = "month",
+              stepmode = "backward"),
+            list(
+              count = 1,
+              label = "1J",
+              step = "year",
+              stepmode = "backward"),
+            list(
+              count = 2,
+              label = "2J",
+              step = "year",
+              stepmode = "todate"))),
+        
+        # rangeslider = list(type = "date")
+        FALSE
+      ),
       dragmode = "pan"
     ) %>%
     plotly::config(displayModeBar = FALSE)
@@ -175,20 +209,18 @@ output$plot3 <- renderPlotly({
     ) %>%
     
     layout(
-      
+      font= list(
+        family="American Typewriter",
+        size=15,
+        color="#7D7771"
+      ),
       title = list (
         text = "Werken",
-        y = 0.9,
+        y = 0.85,
         x = 0.55,
         xanchor = 'center',
         yanchor = 'top'
       ),
-      font= list(
-        family="SF UI Display - Medium",
-        size=15,
-        color="#7f7f7f"
-      ),
-      
       images = list(
         list(
           x = 0.5, 
@@ -210,7 +242,46 @@ output$plot3 <- renderPlotly({
         tick0 = 1, 
         showticklabels = FALSE,
         tickmode = "linear",
-        fixedrange = TRUE
+        fixedrange = TRUE,
+        range = c(0.5, 6)
+      ),
+      xaxis = list(
+        rangeselector = list(
+          buttons = list(
+            list(
+              count = 7,
+              label = "1W",
+              step = "day",
+              stepmode = "backward",
+              size = "10%" ),
+            list(
+              count = 1,
+              label = "1M",
+              step = "month",
+              stepmode = "backward"),
+            list(
+              count = 3,
+              label = "3M",
+              step = "month",
+              stepmode = "backward"),
+            list(
+              count = 6,
+              label = "6M",
+              step = "month",
+              stepmode = "backward"),
+            list(
+              count = 1,
+              label = "1J",
+              step = "year",
+              stepmode = "backward"),
+            list(
+              count = 2,
+              label = "2J",
+              step = "year",
+              stepmode = "todate"))),
+        
+        # rangeslider = list(type = "date")
+        FALSE
       ),
       dragmode = "pan"
     ) %>%

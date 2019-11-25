@@ -1,5 +1,38 @@
-.rangeslider-grabber-min {
+/* .rangeslider-grabber-min {
     display: none; }
 
 .rangeslider-grabber-max {
     display: none; }
+    
+*/
+
+h3 {
+  font-family: American Typewriter;
+  color: white;
+}
+
+#variable {
+  padding-top: 50%;
+}
+
+.bar_chart {
+  margin-top: 20%;
+}
+
+.bar_chart h4 {
+  padding-top: 20%;
+  padding-left: 60%; 
+}
+
+/*
+span {
+  font-family: "sf-ui-display-medium";
+  src: url("sf-ui-display-medium.otf");
+}
+
+li {
+  font-family: "sf-ui-display-medium";
+  src: url("sf-ui-display-medium.otf");
+}
+*/
+

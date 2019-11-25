@@ -47,6 +47,11 @@ stappen <- c(6000,6500,5678,4356,3452,7533,5678)
 temperatuur <- c(37,38,39,37,37,37,37)
 
 
+#verloop bar
+bar_doelen <- c('Sloeproeien', 'Vader zijn', 'Werken', 'Sloeproeien', 'Vader zijn', 'Werken', 'Sloeproeiren')
+bar_symptomen <- c('Depressie', 'Stress', 'Angst')
+
+
 Datum <- as.Date(dates, format = "%d/%m/%y")
 print(Datum)
 
@@ -65,6 +70,10 @@ imageVader <- base64enc::base64encode("./images/vader.jpg")
 imageWerk <- base64enc::base64encode("./images/werk.jpg")
 
 imagePijlen <-base64enc::base64encode("./images/Pijlen2.png")
+
+regenboog <-base64enc::base64encode("./images/regenboog2.jpg")
+
+logo <-base64enc::base64encode("./images/logo.jpg")
 
 # trace color based on color
 colorBasedValue <- function(score) {
