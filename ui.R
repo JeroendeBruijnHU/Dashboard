@@ -18,7 +18,32 @@ header <- dashboardHeader(title = "Goings-On")
 patientEnGebruik <- fluidRow(column(4, h3("Patient nr #123241 " , tags$br(), " 59 jaar | 29-04-1960"), style = "background-color:#b3cebd;border: 3px solid white;"), column(4, h3("83% bijgehouden over 14 weken " , tags$br(), " Laatste update 14 oktober 2019"),  style = "background-color:#b3cebd;", style='border: 3px solid white'))
 
 
-test <- fluidRow(box(title ="fietsen", highchartOutput("hcontainer",height = "500px")), box(title = "Vader zijn", highchartOutput("hcontainer2",height = "500px")), box(title ="fietsen", highchartOutput("hcontainer5",height = "500px")), box(title ="fietsen", highchartOutput("hcontainer6",height = "500px")))
+test <- fluidRow(
+                  box(title ="fietsen", highchartOutput("hcontainer",height = "500px")), 
+                  box(title = "Vader zijn", highchartOutput("hcontainer2",height = "500px")), 
+                  box(title ="fietsen", highchartOutput("hcontainer5",height = "500px")), 
+                  box(title ="fietsen", highchartOutput("hcontainer6",height = "500px")),
+                  column(10,
+                         plotlyOutput("verloop2", height = "400px", width = "100%")),
+                  column(1,
+                         checkboxGroupInput("variable", "Doelen",
+                                            selected = c("Sloeproeien" = "cyl",
+                                                         "Vader zijn" = "am",
+                                                         "Werken" = "gear"), 
+                                            c("Sloeproeien" = "cyl",
+                                              "Vader zijn" = "am",
+                                              "Werken" = "gear"))
+                  ),
+                  column(1,
+                         checkboxGroupInput("variable", "Symptomen",
+                                            c("Depressie" = "cyl",
+                                              "Stress" = "am",
+                                              "Angst" = "gear"))
+                  ),
+                  column(12,
+                         plotlyOutput("verloop", height = "400px", width = "80%"))
+                  
+                  )
 
 symptomen <- fluidRow(
                   box(h2("Depressie"),
@@ -60,29 +85,11 @@ doelen <- fluidRow(
                        plotlyOutput("plot3", height = "400px")))
 
 
-verloop <- fluidRow( column(12,
-                            plotlyOutput("verloop", height = "400px", width = "80%")),
-                     column(10,
-                            plotlyOutput("verloop2", height = "400px", width = "100%")),
-                     column(1,
-                            checkboxGroupInput("variable", "Doelen",
-                                               selected = c("Sloeproeien" = "cyl",
-                                                            "Vader zijn" = "am",
-                                                            "Werken" = "gear"), 
-                                               c("Sloeproeien" = "cyl",
-                                                 "Vader zijn" = "am",
-                                                 "Werken" = "gear"))
-                     ),
-                     column(1,
-                       checkboxGroupInput("variable", "Symptomen",
-                                          c("Depressie" = "cyl",
-                                            "Stress" = "am",
-                                            "Angst" = "gear"))
-                     ),
+verloop <- fluidRow(
                      fluidRow(
                      #verloop 3
                      column(10,
-                            plotlyOutput("verloop3", height = "400px", width = "100%")),
+                            plotlyOutput("verloop3", height = "300px", width = "100%")),
                      column(1,
                             checkboxGroupInput("variable", "Doelen",
                                                selected = c("Sloeproeien" = "cyl",

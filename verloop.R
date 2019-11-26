@@ -478,14 +478,14 @@ voorpagina <- function(input, output){
             marker = list(color = 'white',
                           line = list(color = 'white',
                                       width = 5))) %>% 
-      add_bars(name = "Sloeproeien", y = c(1,1,1,1,1,1,1),
+      add_bars(name = "Sloeproeien", y = c(0.2, 0.6, 1, 0.4, 0.6, 0.2, 0.8),
                 base = 1,
                 marker = list(
                   color = colorsValue
                 )
       ) %>%
       
-      add_bars(name = "Vader zijn", x = Datum, y = c(1,1,1,1,1,1,1),
+      add_bars(name = "Vader zijn", x = Datum, y = c(0.8,0.2,0.4,0.8,0.4,0.2,1),
                 base = 2,
                 marker = list(
                   color = colorsValue2
@@ -493,7 +493,7 @@ voorpagina <- function(input, output){
                 
       ) %>%
       
-      add_bars(name = "Werken", x= Datum, y = c(1,1,1,1,1,1,1),
+      add_bars(name = "Werken", x= Datum, y = c(1,0.4,0.2,1,0.4,0.2,0.6),
                 base = 3,
                 marker = list(
                   color = colorsValue3
@@ -501,7 +501,7 @@ voorpagina <- function(input, output){
                 
       ) %>%
       
-      add_bars(name = "Gamen", x= Datum, y = c(1,1,1,1,1,1,1),
+      add_bars(name = "Gamen", x= Datum, y = c(0.2, 0.6, 1, 0.4, 0.6, 0.2, 0.8),
                base = 4,
                marker = list(
                  color = colorsValue
