@@ -69,7 +69,7 @@ imageVader <- base64enc::base64encode("./images/vader.jpg")
 
 imageWerk <- base64enc::base64encode("./images/werk.jpg")
 
-imagePijlen <-base64enc::base64encode("./images/Pijlen2.png")
+imagePijlen <-base64enc::base64encode("./images/arrows.png")
 
 regenboog <-base64enc::base64encode("./images/regenboog2.jpg")
 
