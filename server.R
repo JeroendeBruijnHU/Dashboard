@@ -75,6 +75,32 @@ regenboog <-base64enc::base64encode("./images/regenboog2.jpg")
 
 logo <-base64enc::base64encode("./images/logo.jpg")
 
+
+#Auto color functie
+colorsValue <- c()
+colorAsignment <- function(score5) {
+  for (waarde in scorereeks) {
+    if (waarde == 1) {
+      colorsValue <- c(colorsValue, "rgb(255, 91, 25)")
+    }
+    else if (waarde == 2) {
+      colorsValue <- c(colorsValue, "rgb(255, 161, 26)")
+    } 
+    else if (waarde == 3) {
+      colorsValue <- c(colorsValue, "rgb(255, 214, 3)")
+    } 
+    else if (waarde == 4) {
+      colorsValue <- c(colorsValue, "rgb(209, 204, 25)")
+    } 
+    else if (waarde == 5) {
+      colorsValue <- c(colorsValue, "rgb(104, 190, 120)")
+    } 
+  }
+  print(colorsValue)
+  return(colorsValue)
+}
+
+
 # trace color based on color
 colorBasedValue <- function(score) {
   if (score > 4) {

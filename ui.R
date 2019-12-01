@@ -106,14 +106,25 @@ verloop <- fluidRow(
                                                  "Angst" = "gear"))
                      )),
                      fluidRow(
-                     column(2, tags$div(class = "bar_chart",
-                          h4("Gamen"),
-                          h4("Werken"),
-                          h4("Vader zijn"),
-                          h4("Sloeproeien")
+                     column(1, tags$div(class = "bar_chart",                          
+                          tags$div(class = "bar_name1", h4("Gamen")),
+                          tags$div(class = "bar_name2", h4("Werken")),
+                          tags$div(class = "bar_name3", h4("Vader zijn")),
+                          tags$div(class = "bar_name3", h4("Sloeproeien"))
                           )),
-                     column(10,
+                     column(11,
                             plotlyOutput("verloop4", height = "400px", width = "100%"))
+                     ),
+                     
+                     fluidRow(
+                       column(1, tags$div(class = "bar_chart",
+                                          tags$div(class = "bar_name1", h4("Depressie")),
+                                          tags$div(class = "bar_name2", h4("Stress")),
+                                          tags$div(class = "bar_name3", h4("Angst")),
+                                          tags$div(class = "bar_name3", h4("Hoofdpijn"))
+                       )),
+                       column(11,
+                              plotlyOutput("verloop5", height = "400px", width = "100%"))
                      )
                        )
 
