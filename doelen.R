@@ -47,7 +47,20 @@ output$plot <- renderPlotly({
               )
     ) %>%
     
+    add_trace(y = scoreLeeg,x = DatumLeeg, mode = 'lines+markers',  
+              line = list(dash = 'dash'),
+              marker = list(
+                color = colorAsignment(scoreLeeg),
+                size = 15,
+                line = list(
+                  color = colorAsignment(scoreLeeg),
+                  width = 2
+                )
+              )
+    ) %>%
+    
     layout(
+      showlegend=FALSE,
       title = list (
         text = "Sloeproeien",
         y = 0.85,
@@ -154,7 +167,6 @@ output$plot2 <- renderPlotly({
         size=15,
         color="#7D7771"
       ),
-      #line = list(shape = "linear", dash = "dot", width = 3),
       images = list(
         list(
           x = 0.5, 

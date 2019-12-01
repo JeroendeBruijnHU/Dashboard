@@ -105,6 +105,26 @@ verloop <- fluidRow(
                                                  "Stress" = "am",
                                                  "Angst" = "gear"))
                      )),
+                     
+                     fluidRow(
+                       #verloop 3
+                       column(10,
+                              plotlyOutput("verloop6", height = "300px", width = "100%")),
+                       column(1,
+                              checkboxGroupInput("variable", "Doelen",
+                                                 selected = c("Sloeproeien" = "cyl",
+                                                              "Vader zijn" = "am",
+                                                              "Werken" = "gear"), 
+                                                 c("Sloeproeien" = "cyl",
+                                                   "Vader zijn" = "am",
+                                                   "Werken" = "gear"))
+                       ),
+                       column(1,
+                              checkboxGroupInput("variable", "Symptomen",
+                                                 c("Depressie" = "cyl",
+                                                   "Stress" = "am",
+                                                   "Angst" = "gear"))
+                       )),
                      fluidRow(
                      column(1, tags$div(class = "bar_chart",                          
                           tags$div(class = "bar_name1", h4("Gamen")),

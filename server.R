@@ -30,9 +30,11 @@ source('test.R', local = TRUE)
 
 
 dates <- c("25/10/19", "26/10/19", "27/10/19", "28/10/19", "29/10/19", "30/10/19", "31/10/19")
+datesLeeg <- c("31/10/19", "2/11/19")
 
 #Doelen
-score <- c(1,3,5,2,3,1,4) 
+score <- c(1,3,5,2,3,1,4)
+scoreLeeg <- c(4, 5)
 score1 <- c(2,1,3,5,4,5,5)
 score2 <- c(4,1,2,4,2,1,5)
 
@@ -53,6 +55,7 @@ bar_symptomen <- c('Depressie', 'Stress', 'Angst')
 
 
 Datum <- as.Date(dates, format = "%d/%m/%y")
+DatumLeeg <- as.Date(datesLeeg, format = "%d/%m/%y")
 print(Datum)
 
 #score <- c(1,2,3,4,5,1,2,3,4,5,1,2)
@@ -69,7 +72,9 @@ imageVader <- base64enc::base64encode("./images/vader.jpg")
 
 imageWerk <- base64enc::base64encode("./images/werk.jpg")
 
-imagePijlen <-base64enc::base64encode("./images/arrows.png")
+imagePijlen <-base64enc::base64encode("./images/Pijlen2.png")
+
+imageArrow <-base64enc::base64encode("./images/arrows.png")
 
 regenboog <-base64enc::base64encode("./images/regenboog2.jpg")
 
