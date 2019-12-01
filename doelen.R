@@ -6,16 +6,42 @@ library(base64enc)
 library(rsconnect)
 
 
+
+
 doelen <- function(input, output){
+  
+#Auto color functie
+colorsValue <- c()
+colorAsignment <- function(scorereeks) {
+  for (waarde in scorereeks) {
+    if (waarde == 1) {
+      colorsValue <- c(colorsValue, "rgb(255, 91, 25)")
+    }
+    else if (waarde == 2) {
+      colorsValue <- c(colorsValue, "rgb(255, 161, 26)")
+    } 
+    else if (waarde == 3) {
+      colorsValue <- c(colorsValue, "rgb(255, 214, 3)")
+    } 
+    else if (waarde == 4) {
+      colorsValue <- c(colorsValue, "rgb(209, 204, 25)")
+    } 
+    else if (waarde == 5) {
+      colorsValue <- c(colorsValue, "rgb(104, 190, 120)")
+    } 
+  }
+  print(colorsValue)
+  return(colorsValue)
+}  
   
 output$plot <- renderPlotly({
   plot_ly(data2, x = Datum) %>% 
     add_trace(y = score, mode = 'lines+markers',  
               marker = list(
-                color = colorsValue,
+                color = colorAsignment(score),
                 size = 15,
                 line = list(
-                  color = colorsValue,
+                  color = colorAsignment(score),
                   width = 2
                 )
               )
@@ -59,6 +85,7 @@ output$plot <- renderPlotly({
         range = c(0.5, 6)
       ),
       xaxis = list(
+        range = "normal",
         rangeselector = list(
           buttons = list(
             list(
@@ -106,10 +133,10 @@ output$plot2 <- renderPlotly({
   plot_ly(data2, x = Datum) %>%
     add_trace(y = score1, mode = 'lines+markers',
               marker = list(
-                color = colorsValue3,
+                color = colorAsignment(score1),
                 size = 15,
                 line = list(
-                  color = colorsValue3,
+                  color = colorAsignment(score1),
                   width = 2
                 )
               )) %>%
@@ -199,10 +226,10 @@ output$plot3 <- renderPlotly({
   plot_ly(data2, x = Datum) %>%
     add_trace(y = score2, mode = 'lines+markers', 
               marker = list(
-                color = colorsValue2,
+                color = colorAsignment(score2),
                 size = 15,
                 line = list(
-                  color = colorsValue2,
+                  color = colorAsignment(score2),
                   width = 2
                 )
               )

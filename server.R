@@ -75,46 +75,6 @@ regenboog <-base64enc::base64encode("./images/regenboog2.jpg")
 
 logo <-base64enc::base64encode("./images/logo.jpg")
 
-
-#Auto color functie
-colorsValue <- c()
-colorAsignment <- function(score5) {
-  for (waarde in scorereeks) {
-    if (waarde == 1) {
-      colorsValue <- c(colorsValue, "rgb(255, 91, 25)")
-    }
-    else if (waarde == 2) {
-      colorsValue <- c(colorsValue, "rgb(255, 161, 26)")
-    } 
-    else if (waarde == 3) {
-      colorsValue <- c(colorsValue, "rgb(255, 214, 3)")
-    } 
-    else if (waarde == 4) {
-      colorsValue <- c(colorsValue, "rgb(209, 204, 25)")
-    } 
-    else if (waarde == 5) {
-      colorsValue <- c(colorsValue, "rgb(104, 190, 120)")
-    } 
-  }
-  print(colorsValue)
-  return(colorsValue)
-}
-
-
-# trace color based on color
-colorBasedValue <- function(score) {
-  if (score > 4) {
-    result <- "green"
-  }
-  else if (score < 2) {
-    result <- "rellow"
-  }
-  else {
-    result <- "red"
-  }
-  return(result)
-}
-
 # Alle kleuren die gebruikt worden in de lijngrafiek
 #colorsValue <- c("rgb(255, 91, 25)", "rgb(255, 161, 26)", "rgb(255, 214, 3)", "rgb(209, 204, 25)", "rgb(104, 190, 120)")
 
