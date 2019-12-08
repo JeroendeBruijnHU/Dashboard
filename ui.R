@@ -14,9 +14,7 @@ library(plotly)
 
 header <- dashboardHeader(title = "Goings-On")
 
-
 patientEnGebruik <- fluidRow(column(4, h3("Patient nr #123241 " , tags$br(), " 59 jaar | 29-04-1960"), style = "background-color:#b3cebd;border: 3px solid white;"), column(4, h3("83% bijgehouden over 14 weken " , tags$br(), " Laatste update 14 oktober 2019"),  style = "background-color:#b3cebd;", style='border: 3px solid white'))
-
 
 test <- fluidRow(
                   box(title ="fietsen", highchartOutput("hcontainer",height = "500px")), 
@@ -84,30 +82,9 @@ doelen <- fluidRow(
                        #fluidRow(actionButton("goButton", "2J", width = '16%', style = "float: right;"), actionButton("goButton", "1J", width = '16%', style = "float: right;"),actionButton("goButton", "6M", width = '16%', style = "float: right;") ,actionButton("goButton", "3M",width = '16%', style = "float: right;"),actionButton("goButton", "1M",width = '16%', style = "float: right;"), actionButton("goButton", "1W", width = '16%', style = "float: right;")),
                        plotlyOutput("plot3", height = "400px")))
 
-
 verloop <- fluidRow(
                      fluidRow(
-                     #verloop 3
-                     column(10,
-                            plotlyOutput("verloop3", height = "300px", width = "100%")),
-                     column(1,
-                            checkboxGroupInput("variable", "Doelen",
-                                               selected = c("Sloeproeien" = "cyl",
-                                                            "Vader zijn" = "am",
-                                                            "Werken" = "gear"), 
-                                               c("Sloeproeien" = "cyl",
-                                                 "Vader zijn" = "am",
-                                                 "Werken" = "gear"))
-                     ),
-                     column(1,
-                            checkboxGroupInput("variable", "Symptomen",
-                                               c("Depressie" = "cyl",
-                                                 "Stress" = "am",
-                                                 "Angst" = "gear"))
-                     )),
-                     
-                     fluidRow(
-                       #verloop 3
+                       #verloop 6
                        column(10,
                               plotlyOutput("verloop6", height = "300px", width = "100%")),
                        column(1,
@@ -145,8 +122,17 @@ verloop <- fluidRow(
                        )),
                        column(11,
                               plotlyOutput("verloop5", height = "400px", width = "100%"))
-                     )
-                       )
+                     ),
+                     fluidRow(
+                       column(1, tags$div(class = "notes",
+                                          tags$div(class = "notitie_title", h4("Notities")),
+                                          tags$div(class = "foto_title", h4("Foto's")),
+                                          tags$div(class = "vragen_title", h4("Vragen"))
+                       )),
+                       column(10, offset= 1, tags$div(class = "notities", actionButton(class = "btn btn-lg","N1", "?"), actionButton(class = "btn btn-lg","N2", "?"), actionButton(class = "btn btn-lg","N3", "?"), actionButton(class = "btn btn-lg","N4", "?"), actionButton(class = "btn btn-lg","N5", "?"), actionButton(class = "btn btn-lg","N6", "?"), actionButton(class = "btn btn-lg","N7", "?"))),
+                       column(10, offset= 1, tags$div(class = "fotos", actionButton(class = "btn btn-lg btn-info","F1", "?"), actionButton(class = "btn btn-lg btn-info","F2", "?"), actionButton(class = "btn btn-lg btn-info","F3", "?"), actionButton(class = "btn btn-lg btn-info","F4", "?"), actionButton(class = "btn btn-lg btn-info","F5", "?"), actionButton(class = "btn btn-lg btn-info","F6", "?"), actionButton(class = "btn btn-lg btn-info","F7", "?"))),
+                       column(10, offset= 1, tags$div(class = "vragen", actionButton(class = "btn btn-lg","V1", "?"), actionButton(class = "btn btn-lg","V2", "?"), actionButton(class = "btn btn-lg","V3", "?"), actionButton(class = "btn btn-lg","V4", "?"), actionButton(class = "btn btn-lg","V5", "?"), actionButton(class = "btn btn-lg","V6", "?"), actionButton(class = "btn btn-lg","V7", "?")))
+                     ))
 
 #body <- dashboardBody(patient, doelen, symptomen, metingen, vragen)
 
@@ -168,4 +154,3 @@ fluidPage(
                tabPanel("Test", test)
     )
 )
-

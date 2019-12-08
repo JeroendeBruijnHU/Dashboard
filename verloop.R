@@ -9,146 +9,6 @@ library(rsconnect)
 
 voorpagina <- function(input, output){
   
-  
-  # verloop 3
-  output$verloop3 <- renderPlotly({
-    plot_ly(data2, x = Datum) %>% 
-      add_trace(name = "Sloeproeien", y = score, mode = 'lines+markers',  
-                marker = list(
-                  color = colorsValue,
-                  size = 10,
-                  line = list(
-                    color = colorsValue,
-                    width = 2
-                  )
-                )
-      ) %>%
-      
-      add_trace(name = "Vader zijn", y = score2, mode = 'line+markers',
-                line = list(color = 'rgb(205, 12, 24)', dash = 'dash'),
-                marker = list(
-                  color = colorsValue2,
-                  size = 10,
-                  line = list(
-                    color = colorsValue2,
-                    width = 2
-                  )
-                )
-                
-      ) %>%
-      
-      add_trace(name = "Werken", y = score3, mode = 'lines+markers',
-                line = list(dash = 'dot'),
-                marker = list(
-                  color = colorsValue3,
-                  size = 10,
-                  line = list(
-                    color = colorsValue3,
-                    width = 2,
-                    dash= 'dot'
-                  )
-                )
-                
-      ) %>%
-      
-      layout(
-        font= list(
-          family="American Typewriter",
-          size=15,
-          color="#7D7771"
-        ),
-        images = list(
-          list(
-            x = 0.5, 
-            y = 0.5, 
-            xref = "paper", 
-            yref = "paper", 
-            layer = "below", 
-            sizex = 0.9999999999999999, 
-            sizey = 0.9999999999999997, 
-            sizing = "fill", 
-            source = paste("data:image/jpg;base64,", logo),
-            opacity = 0.2, 
-            xanchor = "center",
-            yanchor = "middle"
-          ),
-          list(
-            x = 0.5, 
-            y = 0.5, 
-            xref = "paper", 
-            yref = "paper", 
-            layer = "below", 
-            sizex = 0.9999999999999999, 
-            sizey = 0.9999999999999997, 
-            sizing = "fill", 
-            source = paste("data:image/png;base64,", imagePijlen),
-            opacity = 0.2, 
-            xanchor = "center", 
-            yanchor = "middle"
-          )
-        ),
-        yaxis = list(
-          dtick = 1, 
-          tick0 = 1,
-          showticklabels = FALSE,
-          tickmode = "linear",
-          fixedrange = TRUE
-        ),
-        xaxis = list(
-          rangeselector = list(
-            buttons = list(
-              list(
-                count = 7,
-                label = "1W",
-                width = "50",
-                height = "50",
-                step = "day",
-                stepmode = "backward"),
-              list(
-                count = 1,
-                label = "1M",
-                width = "50",
-                height = "50",
-                step = "month",
-                stepmode = "backward"),
-              list(
-                count = 3,
-                label = "3M",
-                width = "50",
-                height = "50",
-                step = "month",
-                stepmode = "backward"),
-              list(
-                count = 6,
-                width = "50",
-                height = "50",
-                label = "6M",
-                step = "month",
-                stepmode = "backward"),
-              list(
-                count = 1,
-                width = "50",
-                height = "50",
-                label = "1J",
-                step = "year",
-                stepmode = "backward"),
-              list(
-                count = 2,
-                width = "50",
-                height = "50",
-                label = "2J",
-                step = "year",
-                stepmode = "todate"))),
-          
-          #rangeslider = list(type = "date")
-          FALSE
-        ),
-        dragmode = "pan"
-      ) %>%
-      
-      plotly::config(displayModeBar = FALSE)
-  })
-  
   # verloop 4
   output$verloop4 <- renderPlotly({
     plot_ly(data2, x = Datum,
@@ -396,7 +256,7 @@ voorpagina <- function(input, output){
       add_trace(name = "Vader zijn", y = score2, mode = 'line+markers',
                 line = list(color = 'rgb(205, 12, 24)', dash = 'dash'),
                 marker = list(
-                  symbol = 'triangle-up',
+                  #symbol = 'triangle-up',
                   color = colorsValue2,
                   size = 10,
                   line = list(
@@ -410,7 +270,7 @@ voorpagina <- function(input, output){
       add_trace(name = "Werken", y = score3, mode = 'lines+markers',
                 line = list(dash = 'dot'),
                 marker = list(
-                  symbol = 'x',
+                  #symbol = 'x',
                   color = colorsValue3,
                   size = 10,
                   line = list(

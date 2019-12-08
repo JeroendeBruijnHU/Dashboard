@@ -45,6 +45,44 @@ h3 {
   display: grid;
 }
 
+.notes .foto_title{
+  margin-top: 22%;
+}
+
+.notes .vragen_title{
+  margin-top: 22%;
+}
+
+.notities button {
+  margin-right: 12%;
+  color: yellow!important;
+  background-color: yellow!important;
+}
+
+.notities button:last-child {
+  margin-right: 0;
+}
+
+.fotos button {
+  margin-right: 12%;
+  color: #5BC0DE!important;
+  background-color: #5BC0DE!important;
+}
+
+.fotos button:last-child {
+  margin-right: 0;
+}
+
+.vragen button {
+  margin-right: 12%;
+}
+
+.vragen button:last-child {
+  margin-right: 0;
+}
+
+
+
 /*
 span {
   font-family: "sf-ui-display-medium";

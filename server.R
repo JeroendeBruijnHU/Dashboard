@@ -91,6 +91,33 @@ colorsValue3 <- c("rgb(104, 190, 120)", "rgb(255, 161, 26)", "rgb(255, 91, 25)",
 # Define server logic required to draw a histogram
 shinyServer(function(input, output) {
   
+  observeEvent(input$N1, {
+    showModal(modalDialog(
+      title = "Vrijdag 25 Oktober 2019 - Notitie",
+      "Ik voel me vandaag niet zo lekker.",
+      easyClose = TRUE,
+      footer = ""
+    ))
+  })
+  
+  observeEvent(input$F1, {
+    showModal(modalDialog(
+      title = "Vrijdag 25 Oktober 2019 - Foto's",
+      "Wat gebeurt er als ...... ?",
+      easyClose = TRUE,
+      footer = ""
+    ))
+  })
+  
+  observeEvent(input$V1, {
+    showModal(modalDialog(
+      title = "Vrijdag 25 Oktober 2019 - Vraag",
+      "Wat gebeurt er als ...... ?",
+      easyClose = TRUE,
+      footer = ""
+    ))
+  })
+  
 # Verloop
 voorpagina(input, output)
 
