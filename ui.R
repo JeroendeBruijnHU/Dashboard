@@ -128,10 +128,31 @@ verloop <- fluidRow(
                                           tags$div(class = "notitie_title", h4("Notities")),
                                           tags$div(class = "foto_title", h4("Foto's")),
                                           tags$div(class = "vragen_title", h4("Vragen"))
-                       )),
-                       column(10, offset= 1, tags$div(class = "notities", actionButton(class = "btn btn-lg","N1", "?"), actionButton(class = "btn btn-lg","N2", "?"), actionButton(class = "btn btn-lg","N3", "?"), actionButton(class = "btn btn-lg","N4", "?"), actionButton(class = "btn btn-lg","N5", "?"), actionButton(class = "btn btn-lg","N6", "?"), actionButton(class = "btn btn-lg","N7", "?"))),
-                       column(10, offset= 1, tags$div(class = "fotos", actionButton(class = "btn btn-lg btn-info","F1", "?"), actionButton(class = "btn btn-lg btn-info","F2", "?"), actionButton(class = "btn btn-lg btn-info","F3", "?"), actionButton(class = "btn btn-lg btn-info","F4", "?"), actionButton(class = "btn btn-lg btn-info","F5", "?"), actionButton(class = "btn btn-lg btn-info","F6", "?"), actionButton(class = "btn btn-lg btn-info","F7", "?"))),
-                       column(10, offset= 1, tags$div(class = "vragen", actionButton(class = "btn btn-lg","V1", "?"), actionButton(class = "btn btn-lg","V2", "?"), actionButton(class = "btn btn-lg","V3", "?"), actionButton(class = "btn btn-lg","V4", "?"), actionButton(class = "btn btn-lg","V5", "?"), actionButton(class = "btn btn-lg","V6", "?"), actionButton(class = "btn btn-lg","V7", "?")))
+                       )), 
+                       column(10, offset= 1, tags$div(class = "notities", 
+                                                      tags$div(actionButton(class = "btn btn-lg","N1", "?")), 
+                                                      tags$div(actionButton(class = "btn btn-lg","N2", "?")), 
+                                                      tags$div(actionButton(class = "btn btn-lg","N3", "?")), 
+                                                      tags$div(actionButton(class = "btn btn-lg","N4", "?")), 
+                                                      tags$div(actionButton(class = "btn btn-lg","N5", "?")), 
+                                                      tags$div(actionButton(class = "btn btn-lg","N6", "?")), 
+                                                      tags$div(actionButton(class = "btn btn-lg","N7", "?")))),
+                       column(10, offset= 1, tags$div(class = "fotos", 
+                                                      tags$div(actionButton(class = "btn btn-lg btn-info","F1", "?")), 
+                                                      tags$div(actionButton(class = "btn btn-lg btn-info","F2", "?")), 
+                                                      tags$div(actionButton(class = "btn btn-lg btn-info","F3", "?")), 
+                                                      tags$div(actionButton(class = "btn btn-lg btn-info","F4", "?")), 
+                                                      tags$div(), 
+                                                      tags$div(), 
+                                                      tags$div(actionButton(class = "btn btn-lg btn-info","F7", "?")))),
+                       column(10, offset= 1, tags$div(class = "vragen", 
+                                                      tags$div(actionButton(class = "btn btn-lg","V1", "?")), 
+                                                      tags$div(), 
+                                                      tags$div(actionButton(class = "btn btn-lg","V3", "?")), 
+                                                      tags$div(actionButton(class = "btn btn-lg","V4", "?")), 
+                                                      tags$div(), 
+                                                      tags$div(actionButton(class = "btn btn-lg","V6", "?")), 
+                                                      tags$div()))
                      ))
 
 #body <- dashboardBody(patient, doelen, symptomen, metingen, vragen)

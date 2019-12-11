@@ -9,6 +9,9 @@ library(rsconnect)
 
 
 doelen <- function(input, output){
+
+doeldatum <- c("25/10/19", "31/10/19")
+doelDate <- as.Date(doeldatum, format = "%d/%m/%y")  
   
 #Auto color functie
 colorsValue <- c()
@@ -98,15 +101,13 @@ output$plot <- renderPlotly({
         range = c(0.5, 6)
       ),
       xaxis = list(
-        range = "normal",
         rangeselector = list(
           buttons = list(
             list(
               count = 7,
               label = "1W",
               step = "day",
-              stepmode = "backward",
-              size = "10%" ),
+              stepmode = "backward"),
             list(
               count = 1,
               label = "1M",
@@ -285,41 +286,53 @@ output$plot3 <- renderPlotly({
         range = c(0.5, 6)
       ),
       xaxis = list(
+        range = doelDate,
         rangeselector = list(
           buttons = list(
             list(
               count = 7,
               label = "1W",
+              width = "50",
+              height = "50",
               step = "day",
-              stepmode = "backward",
-              size = "10%" ),
+              stepmode = "backward"),
             list(
               count = 1,
               label = "1M",
+              width = "50",
+              height = "50",
               step = "month",
               stepmode = "backward"),
             list(
               count = 3,
               label = "3M",
+              width = "50",
+              height = "50",
               step = "month",
               stepmode = "backward"),
             list(
               count = 6,
+              width = "50",
+              height = "50",
               label = "6M",
               step = "month",
               stepmode = "backward"),
             list(
               count = 1,
+              width = "50",
+              height = "50",
               label = "1J",
               step = "year",
               stepmode = "backward"),
             list(
               count = 2,
+              width = "50",
+              height = "50",
               label = "2J",
               step = "year",
               stepmode = "todate"))),
         
-        # rangeslider = list(type = "date")
+        #rangeslider = list(type = "date")
         FALSE
       ),
       dragmode = "pan"
