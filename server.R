@@ -26,6 +26,7 @@ source('doelen.R', local = TRUE)
 source('symptomen.R', local = TRUE)
 source('metingen.R', local = TRUE)
 source('test.R', local = TRUE)
+source('functions.R', local = TRUE)
 
 
 
@@ -103,7 +104,7 @@ shinyServer(function(input, output) {
   observeEvent(input$F1, {
     showModal(modalDialog(
       title = "Vrijdag 25 Oktober 2019 - Foto's",
-      "Wat gebeurt er als ...... ?",
+      HTML('<img src="./images/werk.jpg" height="300" width="400">'),
       easyClose = TRUE,
       footer = ""
     ))

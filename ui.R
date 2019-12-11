@@ -133,7 +133,7 @@ verloop <- fluidRow(
                                                       tags$div(actionButton(class = "btn btn-lg","N1", "?")), 
                                                       tags$div(actionButton(class = "btn btn-lg","N2", "?")), 
                                                       tags$div(actionButton(class = "btn btn-lg","N3", "?")), 
-                                                      tags$div(actionButton(class = "btn btn-lg","N4", "?")), 
+                                                      tags$div(), 
                                                       tags$div(actionButton(class = "btn btn-lg","N5", "?")), 
                                                       tags$div(actionButton(class = "btn btn-lg","N6", "?")), 
                                                       tags$div(actionButton(class = "btn btn-lg","N7", "?")))),
