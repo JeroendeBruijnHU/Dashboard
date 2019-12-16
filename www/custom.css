@@ -46,41 +46,185 @@ h3 {
 }
 
 .notes .foto_title{
-  margin-top: 22%;
+  margin-top: 30%;
 }
 
 .notes .vragen_title{
-  margin-top: 22%;
+  margin-top: 30%;
+}
+
+.notities {
+  display: flex;
+  width: 100%;
+  justify-content: flex-start;
+}
+
+.notities div {
+  margin-right: 11.2%;
+  margin-bottom: 2px;
+  min-width: 44px;
 }
 
 .notities button {
-  margin-right: 12%;
   color: yellow!important;
   background-color: yellow!important;
+  border: 1px solid black;
 }
 
 .notities button:last-child {
   margin-right: 0;
 }
 
+
+.fotos {
+  display: flex;
+  width: 100%;
+  justify-content: flex-start;
+}
+
+.fotos div{
+  margin-right: 11.2%;
+  margin-bottom: 2px;
+  min-width: 44px;
+}
+
 .fotos button {
-  margin-right: 12%;
   color: #5BC0DE!important;
   background-color: #5BC0DE!important;
+  border: 1px solid black;
 }
 
 .fotos button:last-child {
   margin-right: 0;
 }
 
-.vragen button {
-  margin-right: 12%;
+.vragen {
+  display: flex;
+  width: 100%;
+  justify-content: flex-start;
+}
+
+.vragen div{
+  margin-right: 11.2%;
+  margin-bottom: 2px;
+  min-width: 44px;
 }
 
 .vragen button:last-child {
   margin-right: 0;
+  border: 1px solid black;
 }
 
+@media only screen and (min-width: 1920px) {
+  .vragen div{
+    margin-right: 12.2%;
+  }
+  
+    .fotos div{
+    margin-right: 12.2%;
+  }
+  
+    .notities div{
+    margin-right: 12.2%;
+  }
+}
+
+.gemiddelde_weergave .gemiddeld .hoogste {
+  background-color: black;
+  height: 25px;
+  width: 25px;
+} 
+
+.gemiddelde_weergave .gemiddeld .laagste {
+  background-color: black;
+  height: 25px;
+  width: 25px;
+} 
+
+.gemiddelde_weergave .gemiddeld  {
+  display: flex;
+  justify-content: space-between;
+} 
+
+.dot {
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+td {
+  text-align: center;
+  min-width: 100px;
+}
+
+td:first-child { text-align: left;}
+
+th {
+  text-align: center;
+  min-width: 100px;
+}
+
+.Sloeproeien .gemiddelde .dot{
+  background-color: rgb(255, 214, 3);
+}
+
+.Sloeproeien .laagste .dot{
+  background-color: rgb(255, 91, 25);
+}
+
+.Vader.Zijn .gemiddelde .dot{
+  background-color: rgb(255, 214, 3);
+}
+
+.Vader.Zijn .laagste .dot{
+  background-color: rgb(255, 91, 25);
+}
+
+.Werken .gemiddelde .dot{
+  background-color: rgb(255, 214, 3);
+}
+
+.Werken .laagste .dot{
+  background-color: rgb(255, 91, 25);
+}
+
+.Hoofdpijn .gemiddelde .dot{
+  background-color: rgb(255, 214, 3);
+}
+
+.Hoofdpijn .laagste .dot{
+  background-color: rgb(255, 91, 25);
+}
+
+.Depressie .gemiddelde .dot{
+  background-color: rgb(255, 214, 3);
+}
+
+.Depressie .laagste .dot{
+  background-color: rgb(255, 91, 25);
+}
+
+.Stress .gemiddelde .dot{
+  background-color: rgb(255, 214, 3);
+}
+
+.Stress .laagste .dot{
+  background-color: rgb(255, 91, 25);
+}
+
+.Angst .gemiddelde .dot{
+  background-color: rgb(255, 214, 3);
+}
+
+.Angst .laagste .dot{
+  background-color: rgb(255, 91, 25);
+}
+
+
+.borderless td, .borderless th {
+    border: none;
+}
 
 
 /*

@@ -119,6 +119,33 @@ shinyServer(function(input, output) {
     ))
   })
   
+  observeEvent(input$N2, {
+    showModal(modalDialog(
+      title = "Vrijdag 26 Oktober 2019 - Notitie",
+      "Ik voel me vandaag niet zo lekker.",
+      easyClose = TRUE,
+      footer = ""
+    ))
+  })
+  
+  observeEvent(input$F2, {
+    showModal(modalDialog(
+      title = "Vrijdag 26 Oktober 2019 - Foto's",
+      HTML('<img src="./images/vader.jpg" height="300" width="400">'),
+      easyClose = TRUE,
+      footer = ""
+    ))
+  })
+  
+  observeEvent(input$V2, {
+    showModal(modalDialog(
+      title = "Vrijdag 26 Oktober 2019 - Vraag",
+      "Wat gebeurt er als ...... ?",
+      easyClose = TRUE,
+      footer = ""
+    ))
+  })
+  
 # Verloop
 voorpagina(input, output)
 

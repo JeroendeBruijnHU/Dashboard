@@ -39,9 +39,24 @@ test <- fluidRow(
                                               "Angst" = "gear"))
                   ),
                   column(12,
-                         plotlyOutput("verloop", height = "400px", width = "80%"))
-                  
-                  )
+                         plotlyOutput("verloop", height = "400px", width = "80%")),
+                  column(10,
+                         plotlyOutput("verloop7", height = "400px", width = "100%")),
+                  column(1,
+                         checkboxGroupInput("variable", "Doelen",
+                                            selected = c("Sloeproeien" = "cyl",
+                                                         "Vader zijn" = "am",
+                                                         "Werken" = "gear"), 
+                                            c("Sloeproeien" = "cyl",
+                                              "Vader zijn" = "am",
+                                              "Werken" = "gear"))
+                  ),
+                  column(1,
+                         checkboxGroupInput("variable", "Symptomen",
+                                            c("Depressie" = "cyl",
+                                              "Stress" = "am",
+                                              "Angst" = "gear"))
+                  ))
 
 symptomen <- fluidRow(
                   box(h2("Depressie"),
@@ -84,24 +99,36 @@ doelen <- fluidRow(
 
 verloop <- fluidRow(
                      fluidRow(
+                       
+                       column(2, 
+                              tags$div(h4("Doelen")),
+                              tags$table( class ="table",
+                                tags$tr(tags$th(""), tags$th("Gemiddeld"),tags$th("Laagste")),
+                                tags$tr(class= "Sloeproeien", tags$td("Sloeproeien"), tags$td(class = "gemiddelde", tags$span(class="dot")),tags$td(class = "laagste", tags$span(class="dot"))),
+                                tags$tr(class= "Vader Zijn", tags$td("Vader Zijn"), tags$td(class = "gemiddelde", tags$span(class="dot")),tags$td(class = "laagste", tags$span(class="dot"))),
+                                tags$tr(class= "Werken", tags$td("Werken"), tags$td(class = "gemiddelde", tags$span(class="dot")),tags$td(class = "laagste", tags$span(class="dot")))
+                                
+                                         
+                              )),
+
+                     ),
+                     
+                     fluidRow(
+                     column(2, 
+                            tags$div(h4("Symptomen")),
+                            tags$table( class ="table borderless",
+                                        tags$tr(tags$th(""), tags$th("Gemiddeld"),tags$th("Laagste")),
+                                        tags$tr(class= "Hoofdpijn", tags$td("Hoofdpijn"), tags$td(class="gemiddelde", tags$span(class="dot")),tags$td(class ="laagste", tags$span(class="dot"))),
+                                        tags$tr(class= "Depressie", tags$td("Depressie"), tags$td(class="gemiddelde",tags$span(class="dot")),tags$td(class ="laagste",tags$span(class="dot"))),
+                                        tags$tr(class= "Stress", tags$td("Stress"), tags$td(class="gemiddelde",tags$span(class="dot")),tags$td(class ="laagste",tags$span(class="dot"))),
+                                        tags$tr(class= "Angst", tags$td("Angst"), tags$td(class="gemiddelde",tags$span(class="dot")),tags$td(class ="laagste",tags$span(class="dot")))
+                            ))
+                     
+                     ),
+                     fluidRow(
                        #verloop 6
-                       column(10,
-                              plotlyOutput("verloop6", height = "300px", width = "100%")),
-                       column(1,
-                              checkboxGroupInput("variable", "Doelen",
-                                                 selected = c("Sloeproeien" = "cyl",
-                                                              "Vader zijn" = "am",
-                                                              "Werken" = "gear"), 
-                                                 c("Sloeproeien" = "cyl",
-                                                   "Vader zijn" = "am",
-                                                   "Werken" = "gear"))
-                       ),
-                       column(1,
-                              checkboxGroupInput("variable", "Symptomen",
-                                                 c("Depressie" = "cyl",
-                                                   "Stress" = "am",
-                                                   "Angst" = "gear"))
-                       )),
+                       column(12,
+                              plotlyOutput("verloop6", height = "300px", width = "100%"))),
                      fluidRow(
                      column(1, tags$div(class = "bar_chart",                          
                           tags$div(class = "bar_name1", h4("Gamen")),
@@ -109,18 +136,16 @@ verloop <- fluidRow(
                           tags$div(class = "bar_name3", h4("Vader zijn")),
                           tags$div(class = "bar_name3", h4("Sloeproeien"))
                           )),
-                     column(11,
-                            plotlyOutput("verloop4", height = "400px", width = "100%"))
-                     ),
+                     column(5,
+                            plotlyOutput("verloop4", height = "400px", width = "100%")),
                      
-                     fluidRow(
                        column(1, tags$div(class = "bar_chart",
                                           tags$div(class = "bar_name1", h4("Depressie")),
                                           tags$div(class = "bar_name2", h4("Stress")),
                                           tags$div(class = "bar_name3", h4("Angst")),
                                           tags$div(class = "bar_name3", h4("Hoofdpijn"))
                        )),
-                       column(11,
+                       column(5,
                               plotlyOutput("verloop5", height = "400px", width = "100%"))
                      ),
                      fluidRow(
@@ -153,6 +178,9 @@ verloop <- fluidRow(
                                                       tags$div(), 
                                                       tags$div(actionButton(class = "btn btn-lg","V6", "?")), 
                                                       tags$div()))
+                     ),
+                     fluidRow(
+                       
                      ))
 
 #body <- dashboardBody(patient, doelen, symptomen, metingen, vragen)
